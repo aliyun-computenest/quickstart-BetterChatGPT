@@ -197,18 +197,23 @@ Parameters:
   VITE_CUSTOM_API_ENDPOINT:
     Type: String
     Label: VITE_CUSTOM_API_ENDPOINT
+    Default:  
   VITE_DEFAULT_API_ENDPOINT:
     Type: String
     Label: VITE_DEFAULT_API_ENDPOINT
+    Default:  
   VITE_OPENAI_API_KEY:
     Type: String
     Label: VITE_OPENAI_API_KEY
+    Default:  
   VITE_DEFAULT_SYSTEM_MESSAGE:
     Type: String
     Label: VITE_DEFAULT_SYSTEM_MESSAGE
+    Default:  
   VITE_GOOGLE_CLIENT_ID:
     Type: String
     Label: VITE_GOOGLE_CLIENT_ID
+    Default:  
 Resources:
   # 新建vpc
   EcsVpc:
