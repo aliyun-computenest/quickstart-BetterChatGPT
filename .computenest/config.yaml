@@ -9,19 +9,6 @@ Service:
           - Stop
           - Restart
     SupportBackup: true
-    ModifyParametersConfig:
-      - TemplateName: 单机版
-        Operation:
-          - Name: 变更ECS实例规格
-            Description: 变更ECS实例规格
-            Type: Custom
-            Parameters:
-              - EcsInstanceType
-          - Name: 变更ECS实例密码
-            Description: 变更ECS实例密码
-            Type: Custom
-            Parameters:
-              - InstancePassword
   DeployMetadata:
     SupplierDeployMetadata:
       FileArtifactRelation:

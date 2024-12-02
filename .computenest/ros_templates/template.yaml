@@ -194,19 +194,19 @@ Parameters:
           Fn::Equals:
             - ExistingVPC
             - ${VpcOption}
-  ViteCustomApiEndpoint:
+  VITE_CUSTOM_API_ENDPOINT:
     Type: String
     Label: VITE_CUSTOM_API_ENDPOINT
-  ViteDefaultApiEndpoint:
+  VITE_DEFAULT_API_ENDPOINT:
     Type: String
     Label: VITE_DEFAULT_API_ENDPOINT
-  ViteOpenaiApiKey:
+  VITE_OPENAI_API_KEY:
     Type: String
     Label: VITE_OPENAI_API_KEY
-  ViteDefaultSystemMessage:
+  VITE_DEFAULT_SYSTEM_MESSAGE:
     Type: String
     Label: VITE_DEFAULT_SYSTEM_MESSAGE
-  VIteGoogleClientId:
+  VITE_GOOGLE_CLIENT_ID:
     Type: String
     Label: VITE_GOOGLE_CLIENT_ID
 Resources:
@@ -318,11 +318,11 @@ Resources:
 
             systemctl enable quickstart-BetterChatGPT
 
-            echo 'ViteCustomApiEndpoint=${ViteCustomApiEndpoint}' >> /root/application/docker_compose/.env
-            echo 'ViteDefaultApiEndpoint=${ViteDefaultApiEndpoint}' >> /root/application/docker_compose/.env
-            echo 'ViteOpenaiApiKey=${ViteOpenaiApiKey}' >> /root/application/docker_compose/.env
-            echo 'ViteDefaultSystemMessage=${ViteDefaultSystemMessage}' >> /root/application/docker_compose/.env
-            echo 'VIteGoogleClientId=${VIteGoogleClientId}' >> /root/application/docker_compose/.env
+            sed -i 's/VITE_CUSTOM_API_ENDPOINT=[^\n]*/VITE_CUSTOM_API_ENDPOINT=${VITE_CUSTOM_API_ENDPOINT}/' /root/application/docker_compose/.env
+            sed -i 's/VITE_DEFAULT_API_ENDPOINT=[^\n]*/VITE_DEFAULT_API_ENDPOINT=${VITE_DEFAULT_API_ENDPOINT}/' /root/application/docker_compose/.env
+            sed -i 's/VITE_OPENAI_API_KEY=[^\n]*/VITE_OPENAI_API_KEY=${VITE_OPENAI_API_KEY}/' /root/application/docker_compose/.env
+            sed -i 's/VITE_DEFAULT_SYSTEM_MESSAGE=[^\n]*/VITE_DEFAULT_SYSTEM_MESSAGE=${VITE_DEFAULT_SYSTEM_MESSAGE}/' /root/application/docker_compose/.env
+            sed -i 's/VITE_GOOGLE_CLIENT_ID=[^\n]*/VITE_GOOGLE_CLIENT_ID=${VITE_GOOGLE_CLIENT_ID}/' /root/application/docker_compose/.env
             systemctl start quickstart-BetterChatGPT
           - RegionId:
               Ref: ALIYUN::Region
@@ -364,11 +364,11 @@ Metadata:
         Label:
           default: 可用区配置
       - Parameters:
-          - ViteCustomApiEndpoint
-          - ViteDefaultApiEndpoint
-          - ViteOpenaiApiKey
-          - ViteDefaultSystemMessage
-          - VIteGoogleClientId
+          - VITE_CUSTOM_API_ENDPOINT
+          - VITE_DEFAULT_API_ENDPOINT
+          - VITE_OPENAI_API_KEY
+          - VITE_DEFAULT_SYSTEM_MESSAGE
+          - VITE_GOOGLE_CLIENT_ID
         Label:
           en: Software Configuration
           zh-cn: 软件配置
