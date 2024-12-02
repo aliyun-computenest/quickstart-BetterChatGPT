@@ -1,0 +1,48 @@
+Service:
+  RegionId: cn-hangzhou
+  DeployType: ros
+  OperationMetadata:
+    StatusOperationConfigs:
+      - TemplateName: '单机版'
+        SupportOperations:
+          - Start
+          - Stop
+          - Restart
+    SupportBackup: true
+    ModifyParametersConfig:
+      - TemplateName: 单机版
+        Operation:
+          - Name: 变更ECS实例规格
+            Description: 变更ECS实例规格
+            Type: Custom
+            Parameters:
+              - EcsInstanceType
+          - Name: 变更ECS实例密码
+            Description: 变更ECS实例密码
+            Type: Custom
+            Parameters:
+              - InstancePassword
+  DeployMetadata:
+    SupplierDeployMetadata:
+      FileArtifactRelation:
+        '{{ computenest::file::aliyun-computenest_quickstart-BetterChatGPT-docker-compose }}':
+          ArtifactId: ${Artifact.Artifact_1.ArtifactId}
+          ArtifactVersion: ${Artifact.Artifact_1.ArtifactVersion}
+    TemplateConfigs:
+      - Name: 单机版
+        Url: 'ros_templates/template.yaml'
+        AllowedRegions:
+          - ap-southeast-1
+  ServiceType: private
+  ServiceInfo:
+    Locale: zh-CN
+    ShortDescription: docker compose deploy
+    Image: 'resources/icons/service_logo.png'
+Artifact:
+  Artifact_1:
+    ArtifactType: File
+    ArtifactName: aliyun-computenest_quickstart-BetterChatGPT-docker-compose
+    ArtifactProperty:
+      RegionId: cn-hangzhou
+      Url: 'resources/artifact_resources/docker_compose.tar'
+AcrImageBuilder:
